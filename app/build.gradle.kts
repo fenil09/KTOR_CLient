@@ -1,7 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    id("org.jetbrains.kotlin.plugin.serialization")
+    id("kotlinx-serialization")
 }
 
 android {
@@ -28,11 +28,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = JavaVersion.VERSION_17.toString()
     }
     buildFeatures {
         compose = true
@@ -44,7 +44,12 @@ android {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
+        resources.excludes.add("META-INF/INDEX.LIST")
+
     }
+
+
+
 }
 dependencies {
 
@@ -64,11 +69,11 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
-    implementation("io.ktor:ktor-client-android:2.3.2")
-    implementation("io.ktor:ktor-client-serialization:2.3.2")
-    implementation("io.ktor:ktor-client-logging:2.3.2")
-    implementation("ch.qos.logback:logback-classic:1.4.12")
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
+    implementation("io.ktor:ktor-client-android:2.3.6")
+    implementation("io.ktor:ktor-client-serialization:2.3.6")
+    implementation("io.ktor:ktor-client-logging:2.3.6")
+    implementation("io.ktor:ktor-serialization-kotlinx-json:2.3.6")
+    implementation("io.ktor:ktor-client-content-negotiation:2.3.6")
 
 
 }
